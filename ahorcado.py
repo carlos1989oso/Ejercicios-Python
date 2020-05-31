@@ -129,8 +129,6 @@ def run():
                 print('')
                 print('!Has ganado¡...la palabra es: {}'.format(word))
                 break
-        
-
     pass
 
 if __name__ == '__main__':
