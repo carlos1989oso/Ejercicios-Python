@@ -6,7 +6,7 @@ import sys
 def binarySearch(numbers, numberToFind, low, high):
   if low > high:
     return False
-  mid = (low + mid) / 2
+  mid = (low + high) / 2
   if numbers[mid] == numberToFind:
     return True
   elif numbers[mid] > numberToFind:
@@ -20,28 +20,30 @@ def randomListArray(n):
           arrayList[i] = random.randint(0, 100)
       return arrayList
 
-def selectionSort(array):
-  #recorremos los numeros en el array
-  for i in range(len(array)):
-    #Encontramos el valor minimo
-    minValue = i
-    for j in range(i+1, len(array)):
-      if array[minValue] > array[j]:
-        minValue=j
-      array[i], array[minValue] = array[minValue], array[i]
-  return array
+def selectionSort(A):
+  # Traverse through all array elements
+  for i in range(len(A)):
+      # Find the minimum element in remaining
+      # unsorted array
+      min_idx = i
+      for j in range(i+1, len(A)):
+          if A[min_idx] > A[j]:
+              min_idx = j
+      # Swap the found minimum element with
+      # the first element
+      A[i], A[min_idx] = A[min_idx], A[i]
+  return A
 
 def run():
   l = 20
   numberArray = randomListArray(l)
-  print("Not sorted array")
-  print(numberArray)
-  numberArray = selectionSort(numberArray)
-  print("Sorted array")
-  print(numberArray)
-
-  numberToFind = int(rawInput('Input a number: '))
-  result = binarySearch(numberArray, numberToFind,0,(len(numberArray-1)))
+  #print("Not sorted array")
+  #print(numberArray)
+  numbers = selectionSort(numberArray)
+  #print("Sorted array")
+  #print(numbers)
+  numberToFind = int(raw_input("Input a number: "))
+  result = binarySearch(numbers, numberToFind,0,(len(numbers)-1))
   if result is True:
     print('El numero SI esta en la lista')
   else:
